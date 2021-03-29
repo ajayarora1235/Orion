@@ -32,8 +32,7 @@
             ]
         },
         "orion.primitives.sarima.SARIMA#1": {
-            "step": 1
-
+            "steps": 1
         },
         "orion.primitives.timeseries_anomalies.find_anomalies#1": {
             "fixed_threshold": true
