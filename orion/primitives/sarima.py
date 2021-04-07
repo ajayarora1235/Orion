@@ -46,8 +46,8 @@ class SARIMA(object):
         num_sequences = len(X)
         for sequence in range(num_sequences):
             sarima = SARIMAX(X[sequence],
-                                    order=(self.p, self.d, self.q),
-                                    seasonal_order=(self.p, self.d, self.q, self.s))
+                             order=(self.p, self.d, self.q),
+                             seasonal_order=(self.p, self.d, self.q, self.s))
             sarima_fit = sarima.fit(disp=0)
             sarima_results.append(sarima_fit.forecast(self.steps)[0])
 
