@@ -1,6 +1,6 @@
 import numpy as np
-from statsmodels.tsa.forecasting.stl import STLForecast
 from statsmodels.tsa.arima.model import ARIMA
+from statsmodels.tsa.forecasting.stl import STLForecast
 
 
 class STL_ARIMA(object):
