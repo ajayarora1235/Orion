@@ -43,7 +43,10 @@ class STL_ARIMA(object):
 
         num_sequences = len(X)
         for sequence in range(num_sequences):
-            stlf = STLForecast(X[sequence], ARIMA, model_kwargs=dict(order=(self.p, self.d, self.q)), period=3600)
+            stlf = STLForecast(X[sequence],
+                               ARIMA,
+                               model_kwargs=dict(order=(self.p, self.d, self.q)),
+                               period=3600)
             stlf_res = stlf.fit()
             stl_arima_results.append(stlf_res.forecast(self.steps)[0])
 
