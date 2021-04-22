@@ -3,9 +3,11 @@
         "mlprimitives.custom.timeseries_preprocessing.time_segments_aggregate",
         "sklearn.impute.SimpleImputer",
         "sklearn.preprocessing.MinMaxScaler",
+        "orion.primitives.stl_decomposition.decomposition",
         "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences",
         "numpy.reshape",
-        "orion.primitives.stl_arima.STL_ARIMA",
+        "statsmodels.tsa.arima_model.Arima",
+        "orion.primitives.stl_decomposition.seasonal_forecast",
         "orion.primitives.timeseries_errors.regression_errors",
         "orion.primitives.timeseries_anomalies.find_anomalies"
     ],
