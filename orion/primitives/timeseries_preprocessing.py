@@ -57,3 +57,56 @@ def fillna(X, value=None, method=None, axis=None, limit=None, downcast=None):
         X_ = X_.fillna(value=value, method=fill, axis=axis, limit=limit, downcast=downcast)
 
     return X_.values
+
+def getperiod(X, iterations=0):
+        """Get most likely period.
+
+        This function gets the most likely period for X by fitting it to a sinusoidal function.
+        Args:
+            X (ndarray):
+                1-dimensional array containing the input signal for the model.
+            iterations (int):
+                Number of fourier transforms to estimate period.
+        Returns:
+            int:
+                Estimated period of signal, based on fourier transform of signal to find peaks
+        """
+
+        # taken from https://stackoverflow.com/questions/49531952/find-period-of-a-signal-out-of-the-fft
+        X_ = X.copy()
+        X_ -= np.mean(X_)
+        fft = np.fft.rfft(X_, norm="ortho")
+
+        def abs2(x):
+            return x.real**2 + x.imag**2
+
+        selfconvol=np.fft.irfft(abs2(fft), norm="ortho")
+        selfconvol=selfconvol/selfconvol[0]
+        Xtrunk = X_
+
+        # let's get a max, assuming a least 4 periods...
+        for i in range(iterations+1):
+            multipleofperiod=np.argmax(selfconvol[1:len(X_)/4])
+            Xtrunk=X_[0:(len(X_)//multipleofperiod)*multipleofperiod]
+            fft = np.fft.rfft(Xtrunk, norm="ortho")
+            selfconvol=np.fft.irfft(abs2(fft), norm="ortho")
+            selfconvol=selfconvol/selfconvol[0]
+
+        #get ranges for first min, second max
+        fmax=np.max(selfconvol[1:len(Xtrunk)/4])
+        fmin=np.min(selfconvol[1:len(Xtrunk)/4])
+        xstartmin=1
+        while selfconvol[xstartmin]>fmin+0.2*(fmax-fmin) and xstartmin< len(Xtrunk)//4:
+            xstartmin=xstartmin+1
+
+        xstartmax=xstartmin
+        while selfconvol[xstartmax]<fmin+0.7*(fmax-fmin) and xstartmax< len(Xtrunk)//4:
+            xstartmax=xstartmax+1
+
+        xstartmin=xstartmax
+        while selfconvol[xstartmin]>fmin+0.2*(fmax-fmin) and xstartmin< len(Xtrunk)//4:
+            xstartmin=xstartmin+1
+
+        period=np.argmax(selfconvol[xstartmax:xstartmin])+xstartmax
+
+        return period

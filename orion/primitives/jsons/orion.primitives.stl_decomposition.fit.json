@@ -1,0 +1,36 @@
+{
+    "name": "orion.primitives.stl_decomposition.fit",
+    "contributors": [
+        "Ajay Arora <ajarora@mit.edu>"
+    ],
+    "description": "STL Decomposition",
+    "classifiers": {
+        "type": "estimator",
+        "subtype": "regressor"
+    },
+    "modalities": [],
+    "primitive": "orion.primitives.stl_decomposition.fit",
+    "produce": {
+        "method": "fit",
+        "args": [
+            {
+                "name": "X",
+                "type": "ndarray"
+            },
+            {
+                "name": "period",
+                "type": "int"
+            },
+        ],
+        "output": [
+            {
+                "name": "X",
+                "type": "ndarray"
+            },
+            {
+                "name": "seasonal_endog",
+                "type": "ndarray"
+            }
+        ]
+    }
+}

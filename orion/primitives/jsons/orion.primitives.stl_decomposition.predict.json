@@ -1,0 +1,52 @@
+{
+    "name": "orion.primitives.stl_decomposition.predict",
+    "contributors": [
+        "Ajay Arora <ajarora@mit.edu>"
+    ],
+    "description": "STL Forecast",
+    "classifiers": {
+        "type": "estimator",
+        "subtype": "regressor"
+    },
+    "modalities": [],
+    "primitive": "orion.primitives.stl_decomposition.predict",
+    "produce": {
+        "method": "predict",
+        "args": [
+            {
+                "name": "X",
+                "type": "ndarray"
+            },
+            {
+                "name": "index",
+                "type": "ndarray"
+            },
+            {
+                "name": "period",
+                "type": "int"
+            },
+            {
+                "name": "seasonal_endog",
+                "type": "ndarray"
+            }
+        ],
+        "output": [
+            {
+                "name": "y",
+                "type": "ndarray"
+            }
+        ]
+    },
+    "hyperparameters": {
+        "fixed": {
+            "steps": {
+                "type": "int",
+                "default": 10
+            },
+            "window_size": {
+                "type": "int",
+                "default": 250
+            }
+        }
+    }
+}

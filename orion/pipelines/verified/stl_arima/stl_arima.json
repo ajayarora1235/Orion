@@ -3,11 +3,12 @@
         "mlprimitives.custom.timeseries_preprocessing.time_segments_aggregate",
         "sklearn.impute.SimpleImputer",
         "sklearn.preprocessing.MinMaxScaler",
-        "orion.primitives.stl_decomposition.decomposition",
+        "orion.primitives.timeseries_preprocessing.getperiod",
+        "orion.primitives.stl_decomposition.fit",
         "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences",
         "numpy.reshape",
         "statsmodels.tsa.arima_model.Arima",
-        "orion.primitives.stl_decomposition.seasonal_forecast",
+        "orion.primitives.stl_decomposition.predict",
         "orion.primitives.timeseries_errors.regression_errors",
         "orion.primitives.timeseries_anomalies.find_anomalies"
     ],
@@ -35,7 +36,10 @@
         },
         "orion.primitives.stl_arima.STL_ARIMA#1": {
             "steps": 1
-
+        },
+        "orion.primitives.stl_decomposition.predict#1": {
+            "window_size": 250,
+            "steps": 1
         },
         "orion.primitives.timeseries_anomalies.find_anomalies#1": {
             "fixed_threshold": true
@@ -47,10 +51,16 @@
         },
         "numpy.reshape#1": {
             "y": "X"
+        },
+        "orion.primitives.stl_decomposition.predict#1": {
+            "X": "y_hat"
         }
     },
     "output_names": {
         "orion.primitives.stl_arima.STL_ARIMA#1": {
+            "y": "y_hat"
+        },
+        "orion.primitives.stl_decomposition.predict#1": {
             "y": "y_hat"
         },
         "numpy.reshape#1": {

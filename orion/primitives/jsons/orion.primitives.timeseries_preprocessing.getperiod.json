@@ -1,0 +1,34 @@
+{
+    "name": "orion.primitives.timeseries_preprocessing.getperiod",
+    "contributors": ["Ajay Arora <ajarora@mit.edu>"],
+    "documentation": "",
+    "description": "Estimate likeliest period from a given signal.",
+    "classifiers": {
+        "type": "preprocessor",
+        "subtype": "observer"
+    },
+    "modalities": [],
+    "primitive": "orion.primitives.timeseries_preprocessing.getperiod",
+    "produce": {
+        "args": [
+            {
+                "name": "X",
+                "type": "ndarray"
+            }
+        ],
+        "output": [
+            {
+                "name": "period",
+                "type": "int"
+            }
+        ]
+    },
+    "hyperparameters": {
+        "fixed": {
+            "iterations": {
+                "type": "int",
+                "default": 0
+            }
+        }
+    }
+}
