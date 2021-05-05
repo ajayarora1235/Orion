@@ -1,0 +1,40 @@
+{
+    "name": "orion.primitives.decomposition.decompose",
+    "contributors": [
+        "Ajay Arora <ajarora@mit.edu>"
+    ],
+    "description": "STL Decomposition",
+    "classifiers": {
+        "type": "estimator",
+        "subtype": "regressor"
+    },
+    "modalities": [],
+    "primitive": "orion.primitives.decomposition.Decomposition",
+    "produce": {
+        "method": "decompose",
+        "args": [
+            {
+                "name": "X",
+                "type": "ndarray"
+            },
+            {
+                "name": "period",
+                "type": "int"
+            }
+        ],
+        "output": [
+            {
+                "name": "y_trend",
+                "type": "ndarray"
+            },
+            {
+                "name": "y_resid",
+                "type": "ndarray"
+            },
+            {
+                "name": "y_seasonal",
+                "type": "ndarray"
+            }
+        ]
+    }
+}

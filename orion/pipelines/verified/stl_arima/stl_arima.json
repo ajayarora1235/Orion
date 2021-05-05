@@ -4,11 +4,17 @@
         "sklearn.impute.SimpleImputer",
         "sklearn.preprocessing.MinMaxScaler",
         "orion.primitives.timeseries_preprocessing.getperiod",
-        "orion.primitives.stl_decomposition.fit",
+        "orion.primitives.decomposition.decompose",
         "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences",
         "numpy.reshape",
         "statsmodels.tsa.arima_model.Arima",
-        "orion.primitives.stl_decomposition.predict",
+        "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences",
+        "numpy.reshape",
+        "statsmodels.tsa.arima_model.Arima",
+        "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences",
+        "numpy.reshape",
+        "statsmodels.tsa.arima_model.Arima",
+        "orion.primitives.decomposition.compose",
         "orion.primitives.timeseries_errors.regression_errors",
         "orion.primitives.timeseries_anomalies.find_anomalies"
     ],
@@ -28,17 +34,39 @@
             "target_column": 0,
             "window_size": 250
         },
+        "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences#2": {
+            "target_column": 0,
+            "window_size": 250
+        },
+        "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences#3": {
+            "target_column": 0,
+            "window_size": 250
+        },
         "numpy.reshape#1": {
             "newshape": [
                 -1,
                 250
             ]
         },
-        "orion.primitives.stl_arima.STL_ARIMA#1": {
+        "numpy.reshape#2": {
+            "newshape": [
+                -1,
+                250
+            ]
+        },
+        "numpy.reshape#3": {
+            "newshape": [
+                -1,
+                250
+            ]
+        },
+        "statsmodels.tsa.arima_model.Arima#1": {
             "steps": 1
         },
-        "orion.primitives.stl_decomposition.predict#1": {
-            "window_size": 250,
+        "statsmodels.tsa.arima_model.Arima#2": {
+            "steps": 1
+        },
+        "statsmodels.tsa.arima_model.Arima#3": {
             "steps": 1
         },
         "orion.primitives.timeseries_anomalies.find_anomalies#1": {
@@ -49,22 +77,64 @@
         "orion.primitives.timeseries_anomalies.find_anomalies#1": {
             "index": "target_index"
         },
-        "numpy.reshape#1": {
-            "y": "X"
+        "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences#1": {
+            "X": "y_trend"
         },
-        "orion.primitives.stl_decomposition.predict#1": {
-            "X": "y_hat"
+        "numpy.reshape#1": {
+            "y": "y_trend"
+        },
+        "statsmodels.tsa.arima_model.Arima#1": {
+            "X": "y_trend"
+        },
+        "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences#2": {
+            "X": "y_resid"
+        },
+        "numpy.reshape#2": {
+            "y": "y_resid"
+        },
+        "statsmodels.tsa.arima_model.Arima#2": {
+            "X": "y_resid"
+        },
+        "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences#3": {
+            "X": "y_seasonal"
+        },
+        "numpy.reshape#3": {
+            "y": "y_seasonal"
+        },
+        "statsmodels.tsa.arima_model.Arima#3": {
+            "X": "y_seasonal"
         }
     },
     "output_names": {
-        "orion.primitives.stl_arima.STL_ARIMA#1": {
-            "y": "y_hat"
-        },
-        "orion.primitives.stl_decomposition.predict#1": {
-            "y": "y_hat"
+        "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences#1": {
+            "X": "y_trend"
         },
         "numpy.reshape#1": {
-            "y": "X"
+            "y": "y_trend"
+        },
+        "statsmodels.tsa.arima_model.Arima#1": {
+            "y": "y_trend"
+        },
+        "numpy.reshape#2": {
+            "y": "y_resid"
+        },
+        "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences#2": {
+            "X": "y_resid"
+        },
+        "statsmodels.tsa.arima_model.Arima#2": {
+            "y": "y_resid"
+        },
+        "mlprimitives.custom.timeseries_preprocessing.rolling_window_sequences#3": {
+            "X": "y_seasonal"
+        },
+        "numpy.reshape#3": {
+            "y": "y_seasonal"
+        },
+        "statsmodels.tsa.arima_model.Arima#3": {
+            "y": "y_seasonal"
+        },
+        "orion.primitives.decomposition.compose#1": {
+            "y": "y_hat"
         }
     }
 }

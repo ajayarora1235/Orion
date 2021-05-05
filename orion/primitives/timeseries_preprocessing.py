@@ -76,25 +76,27 @@ def getperiod(X, iterations=0):
         X_ = X.copy()
         X_ -= np.mean(X_)
         fft = np.fft.rfft(X_, norm="ortho")
-
+        print(X_.shape)
         def abs2(x):
             return x.real**2 + x.imag**2
 
-        selfconvol=np.fft.irfft(abs2(fft), norm="ortho")
+        z = abs2(fft)
+        print(z.shape)
+        selfconvol=np.fft.irfft(z, axis = 0, norm="ortho")
         selfconvol=selfconvol/selfconvol[0]
         Xtrunk = X_
 
         # let's get a max, assuming a least 4 periods...
         for i in range(iterations+1):
-            multipleofperiod=np.argmax(selfconvol[1:len(X_)/4])
+            multipleofperiod=np.argmax(selfconvol[1:len(X_)//4])
             Xtrunk=X_[0:(len(X_)//multipleofperiod)*multipleofperiod]
             fft = np.fft.rfft(Xtrunk, norm="ortho")
-            selfconvol=np.fft.irfft(abs2(fft), norm="ortho")
+            selfconvol=np.fft.irfft(abs2(fft), axis = 0, norm="ortho")
             selfconvol=selfconvol/selfconvol[0]
 
         #get ranges for first min, second max
-        fmax=np.max(selfconvol[1:len(Xtrunk)/4])
-        fmin=np.min(selfconvol[1:len(Xtrunk)/4])
+        fmax=np.max(selfconvol[1:len(Xtrunk)//4])
+        fmin=np.min(selfconvol[1:len(Xtrunk)//4])
         xstartmin=1
         while selfconvol[xstartmin]>fmin+0.2*(fmax-fmin) and xstartmin< len(Xtrunk)//4:
             xstartmin=xstartmin+1
